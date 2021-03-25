@@ -1,16 +1,26 @@
-import React from 'react'
+import './city.css'
+const City = ({ props }) => {
+  return (
+    <div className='cityWeather'>
+      <div className='city'>
+        <h1>
+          {props.name}, {props.sys.country}
+        </h1>
+        <h2>{props.weather[0].main}</h2>
+        <h3>{props.weather[0].description}</h3>
+        <p>min temp: {props.main.temp_min} °C</p>
+        <p>max temp: {props.main.temp_max} °C</p>
+        <p>
+          location: {props.coord.lat}, {props.coord.lon}
+        </p>
+      </div>
+      <img
+        className='weatherImage'
+        src={`https://openweathermap.org/img/wn/${props.weather[0].icon}@2x.png`}
+        alt='weatherImage'
+      />
+    </div>
+  );
+};
 
-function City({name,country,weatherMain,weatherDescription,minTemp,maxTemp,longitude,lattitude}) {
-    return (
-        <div className="city">
-            <h1>{name},{country}</h1>
-            <h2>{weatherMain}</h2>
-            <h3>{weatherDescription}</h3>
-            <p>min temp : {minTemp}</p>
-            <p>max temp : {maxTemp}</p>
-            <p>location : {longitude} , {lattitude}</p>
-        </div>
-    )
-}
-
-export default City
+export default City;
