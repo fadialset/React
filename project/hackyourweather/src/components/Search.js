@@ -3,7 +3,7 @@ import City from './City';
 
 const Search = () => {
   const [cityName, setCityName] = useState('');
-  const [weather, setWeather] = useState();
+  const [citiesList,setCitiesList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [invalidRequest, setInvalidRequest] = useState(false);
@@ -18,20 +18,20 @@ const Search = () => {
         );
         if (response.ok) {
           const data = await response.json();
-          setWeather(data);
+          setCitiesList([data, ...citiesList]);
           setIsLoading(false);
           setHasError(false);
           setEmptyCityName(false);
           setInvalidRequest(false);
         } else {
           setHasError(false);
-          setWeather();
+          setCitiesList();
           setEmptyCityName(false);
           setInvalidRequest(true);
           setIsLoading(false);
         }
       } catch {
-        setWeather();
+        setCitiesList();
         setEmptyCityName(false);
         setInvalidRequest(false);
         setHasError(true);
@@ -41,7 +41,9 @@ const Search = () => {
       setEmptyCityName(true);
     }
   };
-
+  const deleteCity = (cityID) => {
+    setCitiesList(citiesList.filter((city) => city.id !== cityID));
+  };
   const onSubmit = (e) => {
     e.preventDefault();
     fetchWeatherData();
@@ -58,7 +60,6 @@ const Search = () => {
           value={cityName}
           onChange={(e) => {
             setCityName(e.target.value);
-            setWeather();
             setInvalidRequest(false);
           }}
         />
@@ -68,7 +69,7 @@ const Search = () => {
       {!hasError && !invalidRequest && isLoading && (
         <p id='loading'>Loading....</p>
       )}
-      {cityName && weather && <City props={weather} />}
+      {cityName && citiesList && citiesList.map((city)=><City props={city} key={city.id} deleteCity={() => deleteCity(city.id)}/>)}
       {hasError && <p id='error'>Something Went Wrong!</p>}
       {invalidRequest && (
         <p id='error'>City Name Not Found, Please Enter Correct City Name!</p>

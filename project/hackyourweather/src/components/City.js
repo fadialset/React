@@ -1,11 +1,12 @@
 import './city.css'
-const City = ({ props }) => {
+const City = ({ props ,deleteCity}) => {
   return (
     <div className='cityWeather'>
       <div className='city'>
         <h1>
           {props.name}, {props.sys.country}
         </h1>
+        <button onClick={deleteCity} className="btn">X</button>
         <h2>{props.weather[0].main}</h2>
         <h3>{props.weather[0].description}</h3>
         <p>min temp: {props.main.temp_min} °C</p>
@@ -20,6 +21,7 @@ const City = ({ props }) => {
         alt='weatherImage'
       />
     </div>
+    
   );
 };
 
