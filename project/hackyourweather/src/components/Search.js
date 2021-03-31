@@ -2,11 +2,11 @@ import { useState } from 'react';
 import City from './City';
 
 const Search = () => {
-  const [cityName, setCityName] = useState('');
-  const [weather, setWeather] = useState();
+  const [cityName, setCityName] = useState(null);
+  const [weather, setWeather] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [invalidRequest, setInvalidRequest] = useState(false);
+  const [cityNotFound, setCityNotFound] = useState(false);
   const [emptyCityName, setEmptyCityName] = useState(false);
 
   const fetchWeatherData = async () => {
@@ -22,18 +22,18 @@ const Search = () => {
           setIsLoading(false);
           setHasError(false);
           setEmptyCityName(false);
-          setInvalidRequest(false);
+          setCityNotFound(false);
         } else {
           setHasError(false);
           setWeather();
           setEmptyCityName(false);
-          setInvalidRequest(true);
+          setCityNotFound(true);
           setIsLoading(false);
         }
       } catch {
         setWeather();
         setEmptyCityName(false);
-        setInvalidRequest(false);
+        setCityNotFound(false);
         setHasError(true);
         setIsLoading(false);
       }
@@ -59,7 +59,7 @@ const Search = () => {
           onChange={(e) => {
             setCityName(e.target.value);
             setWeather();
-            setInvalidRequest(false);
+            setCityNotFound(false);
           }}
         />
         <input className='searchSubmit' type='submit' value='Search' />
@@ -70,8 +70,8 @@ const Search = () => {
       )}
       {cityName && weather && <City props={weather} />}
       {hasError && <p id='error'>Something Went Wrong!</p>}
-      {invalidRequest && (
-        <p id='error'>City Name Not Found, Please Enter Correct City Name!</p>
+      {cityNotFound && (
+        <p>City Name Not Found, Please Enter Correct City Name!</p>
       )}
       {emptyCityName && <p id='error'>Please Enter City Name!</p>}
     </div>

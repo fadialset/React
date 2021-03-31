@@ -1,5 +1,6 @@
 import React from 'react'
 import './button.css'
+
 function Button({getAFrined}) {
     return (
         <button onClick={getAFrined} className="btn">

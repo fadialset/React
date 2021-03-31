@@ -2,7 +2,7 @@ import { useState , useEffect } from 'react';
 import Button from './Button';
 import FriendProfile from './FriendProfile'
 function Friend() {
-    const[friend, setFriend] = useState();
+    const [friend, setFriend] = useState(null);
     const [isLoading,setLoading] = useState(false);
     const [hasError, setError] = useState(false);
     const getFriend = async()=>{
@@ -12,7 +12,7 @@ function Friend() {
             const data = await response.json();
             setFriend(data.results[0])
             setLoading(false);
-            console.log(friend)
+            
         }catch{
             setError(true);
             setLoading(false);
@@ -23,14 +23,10 @@ function Friend() {
         <div>
         <Button getAFrined={getFriend}/>
         {isLoading && <p>Loading...</p>}
-        {!hasError && friend && <FriendProfile props={friend}/>}
+        {!hasError && friend && <FriendProfile friend={friend}/>}
         {hasError && <p>Something went wrong</p>}
         </div>
     )
 }
 
 export default Friend
-
-
-
-
