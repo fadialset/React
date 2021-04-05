@@ -1,23 +1,24 @@
 import './city.css'
-const City = ({ props ,deleteCity}) => {
+
+const City = ({ city ,deleteCity}) => {
   return (
     <div className='cityWeather'>
       <div className='city'>
         <h1>
-          {props.name}, {props.sys.country}
+          {city.name}, {city.sys.country}
         </h1>
         <button onClick={deleteCity} className="btn">X</button>
-        <h2>{props.weather[0].main}</h2>
-        <h3>{props.weather[0].description}</h3>
-        <p>min temp: {props.main.temp_min} °C</p>
-        <p>max temp: {props.main.temp_max} °C</p>
+        <h2>{city.weather[0].main}</h2>
+        <h3>{city.weather[0].description}</h3>
+        <p>min temp: {city.main.temp_min} °C</p>
+        <p>max temp: {city.main.temp_max} °C</p>
         <p>
-          location: {props.coord.lat}, {props.coord.lon}
+          location: {city.coord.lat}, {city.coord.lon}
         </p>
       </div>
       <img
         className='weatherImage'
-        src={`https://openweathermap.org/img/wn/${props.weather[0].icon}@2x.png`}
+        src={`https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
         alt='weatherImage'
       />
     </div>

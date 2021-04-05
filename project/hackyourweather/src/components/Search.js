@@ -69,7 +69,7 @@ const Search = () => {
       {!hasError && !invalidRequest && isLoading && (
         <p id='loading'>Loading....</p>
       )}
-      {cityName && citiesList && citiesList.map((city)=><City props={city} key={city.id} deleteCity={() => deleteCity(city.id)}/>)}
+      {cityName && citiesList && citiesList.map((city)=><City city={city} key={city.id} deleteCity={() => deleteCity(city.id)}/>)}
       {hasError && <p id='error'>Something Went Wrong!</p>}
       {invalidRequest && (
         <p id='error'>City Name Not Found, Please Enter Correct City Name!</p>
