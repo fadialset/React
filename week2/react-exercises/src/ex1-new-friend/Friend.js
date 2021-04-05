@@ -21,7 +21,7 @@ function Friend() {
     }
     return (
         <div>
-        <Button getAFrined={getFriend}/>
+        <Button getFrined={getFriend}/>
         {isLoading && <p>Loading...</p>}
         {!hasError && friend && <FriendProfile friend={friend}/>}
         {hasError && <p>Something went wrong</p>}

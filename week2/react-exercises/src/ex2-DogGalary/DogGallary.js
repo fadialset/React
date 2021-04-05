@@ -1,6 +1,7 @@
 import { useState , useEffect} from 'react'
 import Button from './Button'
 import DogPhoto from './DogPhoto'
+
 function DogGallary() {
     const[dogPhotos , setDogPhotos] = useState([]);
     function getDogPhoto(){
@@ -8,8 +9,6 @@ function DogGallary() {
         .then(res => res.json())
         .then(data => {
             setDogPhotos([ ...dogPhotos , data.message])
-            // console.log(data)
-            console.log(dogPhotos)
         })
     }
 

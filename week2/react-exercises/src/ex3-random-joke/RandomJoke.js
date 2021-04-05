@@ -12,7 +12,6 @@ function RandomJoke() {
             const data = await response.json();
             setJoke(data)
             setLoading(false);
-            console.log(joke)
         }catch{
             setError(true);
             setLoading(false);
@@ -23,7 +22,7 @@ function RandomJoke() {
     },[])
     return (
         <div>
-        <Joke props={joke}/>
+        <Joke joke={joke}/>
         </div>
     )
 }

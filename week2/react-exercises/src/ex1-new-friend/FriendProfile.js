@@ -5,7 +5,7 @@ function FriendProfile({friend}) {
     <ul>
             <li>
                 <span>Full Name: </span>
-                {friend.name.title} {friend.name.first} {props.name.last}
+                {friend.name.title} {friend.name.first} {friend.name.last}
             </li>
 
             <li>
@@ -15,7 +15,7 @@ function FriendProfile({friend}) {
 
             <li>
                 <span>Address: </span>
-                {friend.location.street.name} {friend.location.street.number}, {props.location.postcode}
+                {friend.location.street.name} {friend.location.street.number}, {friend.location.postcode}
             </li>
 
             <li>

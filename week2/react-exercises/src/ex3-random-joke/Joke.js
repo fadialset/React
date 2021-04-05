@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Joke({props}) {
+function Joke({joke}) {
 
     return (
         <div>
-            <p>setup : {props.setup}</p>
-            <p>punchline : {props.punchline}</p>
+            <p>setup : {joke.setup}</p>
+            <p>punchline : {joke.punchline}</p>
         </div>
     )
 }

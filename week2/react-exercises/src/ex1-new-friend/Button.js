@@ -1,9 +1,9 @@
 import React from 'react'
 import './button.css'
 
-function Button({getAFrined}) {
+function Button({getFrined}) {
     return (
-        <button onClick={getAFrined} className="btn">
+        <button onClick={getFrined} className="btn">
             Get a frined!
         </button>
     )
