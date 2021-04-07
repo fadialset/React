@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import useFetch from './fetchData';
 import City from './City';
+import './search.css'
 
 const Search = () => {
   const [cityName, setCityName] = useState('');

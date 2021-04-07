@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
+import './city.css'
 
 const City = ({ city, deletCity }) => {
   const { name, sys, weather, main, coord, id } = city;
   return (
     <div className='cityWeather'>
+      <FaTimes className='icon' onClick={() => deletCity(id)} />
       <Link to={`/${name}/${id}`} className='city'>
         <h1>
           {name} - {sys.country}
@@ -17,13 +19,12 @@ const City = ({ city, deletCity }) => {
         <p>
           location: {coord.lat}, {coord.lon}
         </p>
-      </Link>
-      <img
+        <img
         className='weatherImage'
         src={`https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
         alt='weatherImage'
       />
-      <FaTimes className='icon' onClick={() => deletCity(id)} />
+      </Link>
     </div>
   );
 };

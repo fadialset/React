@@ -1,0 +1,20 @@
+.navbar {
+    height: 100px;
+    background-color: rgb(48, 46, 158);
+}
+
+.navbarList {
+    padding-top: 40px;
+    text-align: center;
+}
+
+.listItem {
+    text-decoration: none;
+    color: #fff;
+}
+.listItem:hover{
+    background-color: #fff;
+    color :rgb(48, 46, 158);
+    transition: .5s ease ;
+    padding: 20px 30px;
+}

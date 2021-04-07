@@ -33,9 +33,7 @@ const Chart = ({ chartData }) => {
           <CartesianGrid opacity={0.1} vertical={false} />
         </AreaChart>
       </ResponsiveContainer>
-      <Link className='backHome' to='/'>
-        Back Home
-      </Link>
+
     </>
   );
 };

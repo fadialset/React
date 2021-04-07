@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 
 const PageNotFound = () => {
   return (
-    <section className='routePage'>
+    <section>
       <h2>Page Not Found</h2>
-      <Link className='backHome' to='/'>
+      <Link  to='/'>
         Back Home
       </Link>
     </section>
