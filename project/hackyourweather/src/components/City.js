@@ -1,28 +1,30 @@
-import './city.css'
+import { Link } from 'react-router-dom';
+import { FaTimes } from 'react-icons/fa';
 
-const City = ({ city ,deleteCity}) => {
+const City = ({ city, deletCity }) => {
+  const { name, sys, weather, main, coord, id } = city;
   return (
     <div className='cityWeather'>
-      <div className='city'>
+      <Link to={`/${name}/${id}`} className='city'>
         <h1>
-          {city.name}, {city.sys.country}
+          {name} - {sys.country}
         </h1>
-        <button onClick={deleteCity} className="btn">X</button>
-        <h2>{city.weather[0].main}</h2>
-        <h3>{city.weather[0].description}</h3>
-        <p>min temp: {city.main.temp_min} °C</p>
-        <p>max temp: {city.main.temp_max} °C</p>
+        <h2>
+          {weather[0].main} - {weather[0].description}
+        </h2>
+        <p>min temp: {main.temp_min} °C</p>
+        <p>max temp: {main.temp_max} °C</p>
         <p>
-          location: {city.coord.lat}, {city.coord.lon}
+          location: {coord.lat}, {coord.lon}
         </p>
-      </div>
+      </Link>
       <img
         className='weatherImage'
-        src={`https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
+        src={`https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
         alt='weatherImage'
       />
+      <FaTimes className='icon' onClick={() => deletCity(id)} />
     </div>
-    
   );
 };
 
